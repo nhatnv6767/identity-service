@@ -1,6 +1,7 @@
 package com.devteria.identity_service.controller;
 
 import com.devteria.identity_service.dto.request.UserCreationRequest;
+import com.devteria.identity_service.dto.request.UserUpdateRequest;
 import com.devteria.identity_service.entity.User;
 import com.devteria.identity_service.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +35,7 @@ public class UserController {
     }
 
     @PutMapping("/{userId}")
-    User updateUser()
+    User updateUser(@RequestBody UserUpdateRequest request) {
+
+    }
 }
