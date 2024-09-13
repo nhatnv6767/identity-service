@@ -13,7 +13,7 @@ public class UserService {
     private UserRepository userRepository;
 
     // method dau tien tao cho service nay se la tao 1 user
-    public User createRequest(UserCreationRequest request) {
+    public User createUser(UserCreationRequest request) {
         // request la nhung thong tin can thiet de tao ra table User
         User user = new User();
         // Map data
