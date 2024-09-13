@@ -1,6 +1,7 @@
 package com.devteria.identity_service.service;
 
 import com.devteria.identity_service.dto.request.UserCreationRequest;
+import com.devteria.identity_service.dto.request.UserUpdateRequest;
 import com.devteria.identity_service.entity.User;
 import com.devteria.identity_service.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,19 @@ public class UserService {
 
         return userRepository.save(user);
 
+    }
+
+    public User updateUser(String userId, UserUpdateRequest request) {
+        User user = getUser(userId);
+
+
+        user.setPassword(request.getPassword());
+        user.setFirstName(request.getFirstName());
+        user.setLastName(request.getLastName());
+        user.setDob(request.getDob());
+
+        // save lai cai entity nay
+        return userRepository.save(user);
     }
 
     public List<User> getUsers() {
