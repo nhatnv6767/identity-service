@@ -6,6 +6,8 @@ import com.devteria.identity_service.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
     // goi xuong Repository
@@ -25,5 +27,9 @@ public class UserService {
 
         return userRepository.save(user);
 
+    }
+
+    public List<User> getUsers() {
+        return userRepository.findAll();
     }
 }
