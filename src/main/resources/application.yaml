@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: "jdbc:mysql://192.168.1.113/identity_service"
+    username: root
+    password: 123456
