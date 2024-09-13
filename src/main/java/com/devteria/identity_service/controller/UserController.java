@@ -32,4 +32,7 @@ public class UserController {
     User getUser(@PathVariable("userId") String userId) {
         return userService.getUser(userId);
     }
+
+    @PutMapping("/{userId}")
+    User updateUser()
 }
