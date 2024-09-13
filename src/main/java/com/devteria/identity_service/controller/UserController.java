@@ -19,12 +19,17 @@ public class UserController {
     @PostMapping
     // 1 endpoint se nhan data tu user
     // de map data tu request vao voi object thi ta su dung @RequestBody
-    User createUser(@RequestBody UserCreationRequest request){
+    User createUser(@RequestBody UserCreationRequest request) {
         return userService.createUser(request);
     }
 
     @GetMapping
     List<User> getUsers() {
+        return userService.getUsers();
+    }
+
+    @GetMapping("/{userId}")
+    User getUser(@PathVariable("userId") String userId) {
 
     }
 }
