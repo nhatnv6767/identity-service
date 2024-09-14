@@ -46,3 +46,11 @@ public class UserController {
     }
 
 }
+
+
+/*
+ * Thu tu thuc hien khi tao 1 api
+ * 1. Controller
+ * 2. Service
+ * 3. Repository
+ * */
