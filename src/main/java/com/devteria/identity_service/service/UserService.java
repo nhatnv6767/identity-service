@@ -42,14 +42,18 @@ public class UserService {
         // save lai cai entity nay
         return userRepository.save(user);
     }
-    
+
+    public void deleteUser(String userId) {
+        userRepository.deleteById(userId);
+    }
+
 
     public List<User> getUsers() {
         return userRepository.findAll();
     }
 
     public User getUser(String id) {
-        return userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
+        return userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found!!!!!!"));
     }
 
 }

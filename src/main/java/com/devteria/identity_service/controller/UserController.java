@@ -39,4 +39,18 @@ public class UserController {
         return userService.updateUser(userId, request);
     }
 
+    @DeleteMapping("/{userId}")
+    String deleteUser(@PathVariable String userId) {
+        userService.deleteUser(userId);
+        return "User has been deleted.";
+    }
+
 }
+
+
+/*
+ * Thu tu thuc hien khi tao 1 api
+ * 1. Controller
+ * 2. Service
+ * 3. Repository
+ * */
