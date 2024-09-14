@@ -38,4 +38,5 @@ public class UserController {
     User updateUser(@PathVariable String userId, @RequestBody UserUpdateRequest request) {
         return userService.updateUser(userId, request);
     }
+
 }
