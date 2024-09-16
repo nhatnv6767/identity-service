@@ -21,6 +21,9 @@ public class UserService {
         User user = new User();
 
         // kiem tra duplicate user
+        if (userRepository.existsByUsername(request.getUsername())) {
+            throw new RuntimeException("User existed.");
+        }
 
         // Map data
         user.setUsername(request.getUsername());
