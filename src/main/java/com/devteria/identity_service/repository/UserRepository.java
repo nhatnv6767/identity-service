@@ -11,5 +11,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface UserRepository extends JpaRepository<User, String> {
-
+    // kiem tra su ton tai cua field username nay voi value username ma ta truyen vao
+    boolean existsByUsername(String username);
 }

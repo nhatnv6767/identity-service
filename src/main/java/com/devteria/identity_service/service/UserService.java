@@ -19,6 +19,9 @@ public class UserService {
     public User createUser(UserCreationRequest request) {
         // request la nhung thong tin can thiet de tao ra table User
         User user = new User();
+
+        // kiem tra duplicate user
+
         // Map data
         user.setUsername(request.getUsername());
         user.setPassword(request.getPassword());
