@@ -3,6 +3,8 @@ package com.devteria.identity_service.service;
 import com.devteria.identity_service.dto.request.UserCreationRequest;
 import com.devteria.identity_service.dto.request.UserUpdateRequest;
 import com.devteria.identity_service.entity.User;
+import com.devteria.identity_service.exception.AppException;
+import com.devteria.identity_service.exception.ErrorCode;
 import com.devteria.identity_service.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +24,7 @@ public class UserService {
 
         // kiem tra duplicate user
         if (userRepository.existsByUsername(request.getUsername())) {
-            throw new RuntimeException("User existed.");
+            throw new AppException(ErrorCode.USER_EXISTED);
         }
 
         // Map data
