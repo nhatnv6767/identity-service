@@ -7,7 +7,7 @@ import java.time.LocalDate;
 public class UserCreationRequest {
 
     // validation cua Spring thi yeu cau chung ta truyen vao 1 const
-    // trong message chinh la cai key cua ErrorCode ant
+    // trong message chinh la cai key cua ErrorCode
     @Size(min = 3, message = "USERNAME_INVALID")
     private String username;
 
