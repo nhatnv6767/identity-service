@@ -6,7 +6,9 @@ import java.time.LocalDate;
 
 public class UserCreationRequest {
 
-    @Size(min = 3, message = "Username must be at least 3 characters")
+    // validation cua Spring thi yeu cau chung ta truyen vao 1 const
+    // trong message chinh la cai key cua ErrorCode ant
+    @Size(min = 3, message = "USERNAME_INVALID")
     private String username;
 
     @Size(min = 8, message = "Password must be at least 8 characters")
