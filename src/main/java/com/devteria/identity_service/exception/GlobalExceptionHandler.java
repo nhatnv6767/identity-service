@@ -14,10 +14,10 @@ public class GlobalExceptionHandler {
 
     // define exception (annotation)
 
-    @ExceptionHandler(value = RuntimeException.class)
+    @ExceptionHandler(value = Exception.class)
     ResponseEntity<ApiResponse> handlingRuntimeException(RuntimeException exception) {
         ApiResponse apiResponse = new ApiResponse();
-        apiResponse.setCode(1001);
+        apiResponse.setCode(9999);
         apiResponse.setMessage(exception.getMessage());
         return ResponseEntity.badRequest().body(apiResponse);
     }
