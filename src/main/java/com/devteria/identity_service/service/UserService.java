@@ -5,6 +5,7 @@ import com.devteria.identity_service.dto.request.UserUpdateRequest;
 import com.devteria.identity_service.entity.User;
 import com.devteria.identity_service.exception.AppException;
 import com.devteria.identity_service.exception.ErrorCode;
+import com.devteria.identity_service.mapper.UserMapper;
 import com.devteria.identity_service.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,23 +17,27 @@ public class UserService {
     // goi xuong Repository
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private UserMapper userMapper;
 
     // method dau tien tao cho service nay se la tao 1 user
     public User createUser(UserCreationRequest request) {
-        // request la nhung thong tin can thiet de tao ra table User
-        User user = new User();
+
 
         // kiem tra duplicate user
         if (userRepository.existsByUsername(request.getUsername())) {
             throw new AppException(ErrorCode.USER_EXISTED);
         }
 
+        // request la nhung thong tin can thiet de tao ra table User
+        // thay the duoc cho viec khoi tao User roi set tung du lieu vao voi UserCreationRequest
+        User user = userMapper.toUser(request);
         // Map data
-        user.setUsername(request.getUsername());
-        user.setPassword(request.getPassword());
-        user.setFirstName(request.getFirstName());
-        user.setLastName(request.getLastName());
-        user.setDob(request.getDob());
+//        user.setUsername(request.getUsername());
+//        user.setPassword(request.getPassword());
+//        user.setFirstName(request.getFirstName());
+//        user.setLastName(request.getLastName());
+//        user.setDob(request.getDob());
 
         return userRepository.save(user);
 
