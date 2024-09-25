@@ -27,11 +27,6 @@ public class UserService {
             throw new AppException(ErrorCode.USER_EXISTED);
         }
 
-        UserCreationRequest request1 = UserCreationRequest.builder()
-                .username("username")
-                .firstName("firstName")
-                .build();
-
         // Map data
         user.setUsername(request.getUsername());
         user.setPassword(request.getPassword());
