@@ -11,6 +11,8 @@ import com.devteria.identity_service.repository.UserRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -36,6 +38,8 @@ public class UserService {
         // request la nhung thong tin can thiet de tao ra table User
         // thay the duoc cho viec khoi tao User roi set tung du lieu vao voi UserCreationRequest
         User user = userMapper.toUser(request);
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
         // Map data
 //        user.setUsername(request.getUsername());
 //        user.setPassword(request.getPassword());
