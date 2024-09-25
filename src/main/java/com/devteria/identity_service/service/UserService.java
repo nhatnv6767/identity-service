@@ -45,12 +45,14 @@ public class UserService {
 
     public User updateUser(String userId, UserUpdateRequest request) {
         User user = getUser(userId);
+        userMapper.updateUser(user, request);
 
+        // ko can lam nhieu viec nhu the nay nua, code gon hon
+//        user.setPassword(request.getPassword());
+//        user.setFirstName(request.getFirstName());
+//        user.setLastName(request.getLastName());
+//        user.setDob(request.getDob());
 
-        user.setPassword(request.getPassword());
-        user.setFirstName(request.getFirstName());
-        user.setLastName(request.getLastName());
-        user.setDob(request.getDob());
 
         // save lai cai entity nay
         return userRepository.save(user);
