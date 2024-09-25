@@ -44,8 +44,8 @@ public class UserService {
 
     }
 
-    public User updateUser(String userId, UserUpdateRequest request) {
-        User user = getUser(userId);
+    public UserResponse updateUser(String userId, UserUpdateRequest request) {
+        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found!!!!!!"));
         userMapper.updateUser(user, request);
 
         // ko can lam nhieu viec nhu the nay nua, code gon hon
@@ -56,7 +56,7 @@ public class UserService {
 
 
         // save lai cai entity nay
-        return userRepository.save(user);
+        return userMapper.toUserResponse(userRepository.save(user));
     }
 
     public void deleteUser(String userId) {
