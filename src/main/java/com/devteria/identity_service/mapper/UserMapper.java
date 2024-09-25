@@ -13,7 +13,7 @@ public interface UserMapper {
     // method nay se nhan ve 1 parameter la request theo kieu UserCreationRequest va tra ve 1 class kieu la User
     User toUser(UserCreationRequest request);
 
-    @Mapping(source = "firstName", target = "lastName")
+    @Mapping(target = "lastName", ignore = true)
     UserResponse toUserResponse(User user);
 
     // map data tu UserUpdateRequest vao Object User
