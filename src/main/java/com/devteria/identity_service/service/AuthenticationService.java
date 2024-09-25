@@ -57,7 +57,7 @@ public class AuthenticationService {
                 .expirationTime(new Date(
                         Instant.now().plus(1, ChronoUnit.HOURS).toEpochMilli()
                 ))
-                .claim("customClaim", "Custom")
+                .claim("userId", "Custom")
                 .build();
 
         Payload payload = new Payload(jwtClaimsSet.toJSONObject());
