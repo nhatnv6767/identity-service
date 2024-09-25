@@ -1,12 +1,16 @@
 package com.devteria.identity_service.dto.request;
 
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class UserCreationRequest {
 
