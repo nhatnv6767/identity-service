@@ -1,6 +1,7 @@
 package com.devteria.identity_service.service;
 
 import com.devteria.identity_service.dto.request.AuthenticationRequest;
+import com.devteria.identity_service.dto.response.AuthenticationResponse;
 import com.devteria.identity_service.exception.AppException;
 import com.devteria.identity_service.exception.ErrorCode;
 import com.devteria.identity_service.repository.UserRepository;
@@ -17,10 +18,14 @@ import org.springframework.stereotype.Service;
 public class AuthenticationService {
     UserRepository userRepository;
 
-    public boolean isAuthenticated(AuthenticationRequest request) {
+    public AuthenticationResponse isAuthenticated(AuthenticationRequest request) {
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
         var user = userRepository.findByUsername(request.getUsername()).orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXISTED));
 
-        return passwordEncoder.matches(request.getPassword(), user.getPassword());
+        boolean authenticated =  passwordEncoder.matches(request.getPassword(), user.getPassword());
+
+        if(!authenticated){
+            throw new AppException(ErrorCode.)
+        }
     }
 }
