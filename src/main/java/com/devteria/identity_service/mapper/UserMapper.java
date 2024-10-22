@@ -11,6 +11,8 @@ import org.mapstruct.MappingTarget;
 @Mapper(componentModel = "spring")
 public interface UserMapper {
     // method nay se nhan ve 1 parameter la request theo kieu UserCreationRequest va tra ve 1 class kieu la User
+
+    
     User toUser(UserCreationRequest request);
 
     //    @Mapping(target = "lastName", ignore = true)
