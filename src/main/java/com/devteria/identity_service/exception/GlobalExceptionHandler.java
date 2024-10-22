@@ -17,8 +17,8 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = Exception.class)
     ResponseEntity<ApiResponse> handlingRuntimeException(RuntimeException exception) {
         ApiResponse apiResponse = new ApiResponse();
-        apiResponse.setCode(9999);
-        apiResponse.setMessage(exception.getMessage());
+        apiResponse.setCode(ErrorCode.UNCATEGORIZED_EXCEPTION.getCode());
+        apiResponse.setMessage(ErrorCode.UNCATEGORIZED_EXCEPTION.getMessage());
         return ResponseEntity.badRequest().body(apiResponse);
     }
 
@@ -33,8 +33,24 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(value = MethodArgumentNotValidException.class)
-    ResponseEntity<String> handlingValidation(MethodArgumentNotValidException exception) {
-        return ResponseEntity.badRequest().body(exception.getFieldError().getDefaultMessage());
+    ResponseEntity<ApiResponse> handlingValidation(MethodArgumentNotValidException exception) {
+        String enumKey = exception.getFieldError().getDefaultMessage();
+
+        // de chac chan khi ma co 1 key khong dung thi se co 1 exception xay ra
+        ErrorCode errorCode = ErrorCode.INVALID_KEY;
+
+        try {
+            errorCode = ErrorCode.valueOf(enumKey);
+        } catch (IllegalArgumentException e) {
+            // truong hop neu co 1 key khong dung thi xay ra IllegalArgumentException
+            
+        }
+
+        ApiResponse apiResponse = new ApiResponse();
+        apiResponse.setCode(errorCode.getCode());
+        apiResponse.setMessage(errorCode.getMessage());
+
+        return ResponseEntity.badRequest().body(apiResponse);
     }
 
 }
